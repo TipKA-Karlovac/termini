@@ -1,0 +1,15 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings_test"
+python_files = ["test_*.py"]
+testpaths = ["booking/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["*/migrations/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "DJ", "RUF"]
+# RUF001-003: poruke i komentari su na hrvatskom, s navodnicima „…” i crticom –.
+# RUF012: Djangove i DRF-ove klase po dogovoru imaju promjenjive atribute klase.
+ignore = ["RUF001", "RUF002", "RUF003", "RUF012"]

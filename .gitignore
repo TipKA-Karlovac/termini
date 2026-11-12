@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+db.sqlite3
+staticfiles/
+
+# Node
+node_modules/
+dist/
+
+# lokalne tajne i postavke
+.env
+.env.*
+!.env.example
+.dev-owner-password.txt
+
+# uređivači
+.idea/
+.vscode/

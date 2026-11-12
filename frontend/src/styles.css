@@ -1,0 +1,463 @@
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --text: #1d2327;
+  --muted: #5d6970;
+  --line: #dcdfe1;
+  --accent: #0f6b62;
+  --accent-strong: #0a4f48;
+  --accent-soft: #e3f1ef;
+  --danger: #a4262c;
+  --danger-soft: #fbeaea;
+  --radius: 10px;
+  --focus: 0 0 0 3px rgb(15 107 98 / 35%);
+
+  color-scheme: light;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a,
+.link {
+  color: var(--accent-strong);
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.page {
+  max-width: 760px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 28px 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.tagline,
+.muted {
+  color: var(--muted);
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  padding: 28px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* --- koraci ---------------------------------------------------------------- */
+
+.step {
+  margin-bottom: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.step.narrow {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.step h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step h3 {
+  margin: 18px 0 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.step-number {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  display: grid;
+  place-items: center;
+}
+
+/* --- gumbi koji se biraju (usluga, dan, termin) --------------------------- */
+
+.service,
+.day,
+.slot {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.service:hover,
+.day:hover,
+.slot:hover {
+  border-color: var(--accent);
+}
+
+.service[aria-pressed="true"],
+.day[aria-pressed="true"],
+.slot[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.services {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.service {
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.service-name {
+  font-weight: 600;
+}
+
+.service-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.service-meta {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.9rem;
+}
+
+.days {
+  margin: 0 -20px;
+  padding: 4px 20px 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.day {
+  flex: none;
+  min-width: 68px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.day-name {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.day-date {
+  font-weight: 600;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 8px;
+}
+
+.slot {
+  padding: 10px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- obrazac --------------------------------------------------------------- */
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.summary {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #aeb5b9;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.hint,
+.field-error {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.hint {
+  color: var(--muted);
+}
+
+.field-error {
+  color: var(--danger);
+}
+
+.button {
+  padding: 11px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+
+.button-quiet {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.button-quiet:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.alert {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: #f1f1ee;
+}
+
+.alert-error {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* --- pregled termina ------------------------------------------------------- */
+
+.details {
+  margin: 0 0 16px;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 18px;
+}
+
+.details dt {
+  color: var(--muted);
+}
+
+.details dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions-start {
+  justify-content: flex-start;
+  margin-bottom: 12px;
+}
+
+.date-input {
+  width: auto;
+}
+
+.appointments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.appointment {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 4px 14px;
+  align-items: start;
+}
+
+.appointment-time {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.appointment-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.appointment.cancelled .appointment-time,
+.appointment.cancelled .appointment-body {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.note {
+  font-style: italic;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f1f1ee;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .appointment {
+    grid-template-columns: 1fr auto;
+  }
+
+  .appointment-time {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- dijalog --------------------------------------------------------------- */
+
+.dialog {
+  width: min(440px, calc(100vw - 32px));
+  padding: 22px;
+  border: 0;
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+
+.dialog h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.dialog-body {
+  margin-bottom: 18px;
+}
