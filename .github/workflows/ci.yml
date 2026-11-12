@@ -36,6 +36,8 @@ jobs:
       # Na PostgreSQL-u se izvršava i test koji provjerava da sama baza
       # odbija termine koji se preklapaju.
       DATABASE_URL: ${{ matrix.database == 'postgres' && 'postgres://termini:termini@localhost:5432/termini' || '' }}
+      # Test pada ako posao ne radi na bazi koju mu ime tvrdi.
+      EXPECTED_DATABASE: ${{ matrix.database == 'postgres' && 'postgresql' || 'sqlite' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6

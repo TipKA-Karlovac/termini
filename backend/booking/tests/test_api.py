@@ -1,3 +1,4 @@
+import os
 from datetime import timedelta
 
 import pytest
@@ -227,6 +228,14 @@ def test_database_itself_rejects_overlapping_appointments(haircut):
     insert(local(2, 9, 15), status=Appointment.Status.CANCELLED)  # otkazani ne smetaju
     with pytest.raises(IntegrityError), transaction.atomic():
         insert(local(2, 9, 15))
+
+
+def test_ci_runs_on_the_database_it_claims():
+    """U CI-ju posao „postgres” ne smije potiho raditi na SQLiteu i preskočiti test iznad."""
+    expected = os.environ.get("EXPECTED_DATABASE")
+    if not expected:
+        pytest.skip("EXPECTED_DATABASE nije postavljen (lokalno pokretanje)")
+    assert connection.vendor == expected
 
 
 # --- otkazivanje poveznicom --------------------------------------------------
